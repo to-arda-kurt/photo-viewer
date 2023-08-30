@@ -2,27 +2,24 @@ import { SinglePhotoView } from "./SinglePhotoView"
 import { useState } from "react"
 import { imageUrls } from "./GetImageUrls"
 import { PhotoGallery } from "./PhotoGallery"
-import { BiArrowFromLeft, BiArrowFromRight } from "react-icons/bi";
-
-
-
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineArrowsAlt } from "react-icons/ai";
 
 
 const PhotoViewer = () => {
     const [urlIndex, setUrlIndex] = useState(0)
 
-    const selectImageHandler = (clickedUrlIndex:number) => {
+    const selectImageHandler = (clickedUrlIndex: number) => {
         setUrlIndex(clickedUrlIndex)
     }
 
-    const changePhotoHandler = (navigation:string) => {
-      if(navigation === 'next') {
-        setUrlIndex(urlIndex + 1)
-      }
+    const changePhotoHandler = (navigation: string) => {
+        if (navigation === 'next') {
+            setUrlIndex(urlIndex + 1)
+        }
 
-      if(navigation === 'prev') {
-        setUrlIndex(urlIndex - 1)
-      }
+        if (navigation === 'prev') {
+            setUrlIndex(urlIndex - 1)
+        }
     }
 
     return (
@@ -33,13 +30,20 @@ const PhotoViewer = () => {
             </div>
             <div className="viewer-wrapper">
                 <div className="main-photo-viewer">
-                    { urlIndex > 0 && <p className="main-photo-viewer_nav prev"  onClick={() => changePhotoHandler('prev')}> <BiArrowFromRight /> </p>  }
 
-           
                     <SinglePhotoView urlIndex={urlIndex} />
-                    { urlIndex < imageUrls.length-1 && <p className="main-photo-viewer_nav next" onClick={() => changePhotoHandler('next')}><BiArrowFromLeft />  </p> }
+                    <div className="toolbox">
+                    <div className="toolbox-tools">
+                         <p className="main-photo-viewer_nav next"><AiOutlineArrowsAlt /> </p>
+                        </div>
+                        <div className="toolbox-navigation">
+                            {urlIndex > 0 && <p className="main-photo-viewer_nav prev" onClick={() => changePhotoHandler('prev')}> <AiOutlineArrowLeft /> </p>}
+                            {urlIndex < imageUrls.length - 1 && <p className="main-photo-viewer_nav next" onClick={() => changePhotoHandler('next')}><AiOutlineArrowRight />  </p>}
+                        </div> 
+                        
+                    </div>
                 </div>
-                <PhotoGallery urls={imageUrls} selectImage={(clickedUrlIndex : number) => selectImageHandler(clickedUrlIndex)} />
+                <PhotoGallery urls={imageUrls} selectImage={(clickedUrlIndex: number) => selectImageHandler(clickedUrlIndex)} />
 
             </div>
         </>

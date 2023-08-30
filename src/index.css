@@ -12,8 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --primary-colour: #2e3532;
-  --secondary-colour: #8b2635;
+  --primary-colour: #18152E;
+  --secondary-colour: #4FCCFE;
   --text-colour: #e0e2db;
   --accent-colour: #d3efbd
 }
@@ -74,17 +74,28 @@ box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 
 .main-photo-viewer{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 1em;
   justify-content: space-evenly;
-  align-items: flex-end;
   margin: 3em 0;
 }
 
+.toolbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+
+.toolbox-navigation{
+  display: flex;
+  flex-direction: row;
+  
+}
+
 .main-photo-viewer_nav{
-  max-width: 13vw;
-  font-size: 8em;
-  position: absolute;
+  max-width: 8vw;
+  font-size: 4em;
   transition: all 0.3s linear;
   cursor: pointer;
   
@@ -96,6 +107,8 @@ box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 .next{
   right: 5vw;
   z-index: 99;
+  justify-self: flex-end;
+  
   
 }
 
@@ -121,7 +134,7 @@ box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .thumbnail-image{
-  width: 25em;
+  width: 15em;
   height: auto;
   border-radius: 1em;
   transition: all 0.1s linear;
@@ -132,3 +145,20 @@ box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   
   }
+
+  @media only screen and (min-width: 400px) {
+    .thumbnail-image{
+      width: 25em;
+
+    }
+
+    .main-photo-viewer_nav{
+      max-width: 13vw;
+      font-size: 6em;
+
+
+      
+    }
+    
+  }
+  
